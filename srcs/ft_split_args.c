@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:13:59 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/04/26 01:44:54 by hel-makh         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:24:06 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ static size_t	ft_split_arglen(char const *s)
 	return (str_len);
 }
 
-static size_t	ft_loop_count(const char *s, size_t *index, char *quote)
+static size_t	ft_loop_count(const char *s, size_t *index, char *quote)	//"   hello"에서 ""안에 길이 새는 함수
 {
 	size_t	count;
 
 	count = 0;
 	while (s[*index])
 	{
-		if (!*quote && ft_isspace(s[*index - 1]) && !ft_isspace(s[*index]))
+		if (!*quote && ft_isspace(s[*index - 1]) && !ft_isspace(s[*index]))	// hello"hi"같이 첫시작이 "가 아니면서 중간에 "가 들어잇는 경우 
 			count ++;
 		if (!*quote && (s[*index] == '"' || s[*index] == '\''))
 			*quote = s[*index];

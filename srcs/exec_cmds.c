@@ -6,7 +6,7 @@
 /*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 10:35:11 by ybensell          #+#    #+#             */
-/*   Updated: 2022/05/18 23:45:35 by yongmiki         ###   ########.fr       */
+/*   Updated: 2022/05/30 12:52:23 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,15 @@ static int	handle_operators(t_cmd **cmd)
 
 	if (((*cmd)->type == AND && g_glob.exit_status != 0)
 		|| ((*cmd)->type == OR && g_glob.exit_status == 0))
-	{
+	{	// AND는 앞에서 실패시 뒤에꺼 무시, OR는 앞에서 성공시 뒤에꺼 무시
 		// printf("cmd before : %s\n",*(*cmd)->cmd);
 		i = ft_next_cmd((*cmd));//220516
 		// printf("cmd after : %s\n",*(*cmd)->cmd);
-		while (i--)
+		while (i--){
+			// printf("cmd in handle : %s\n",*(*cmd)->cmd);
 			(*cmd) = (*cmd)->next;
-		return (1);
+
+}		return (1);
 	}
 	return (0);
 }
@@ -56,17 +58,19 @@ static void	child_wait(t_vars *vars)
 	int		status;
 
 	waitpid(g_glob.pid, &status, 0);
-	if (WIFEXITED(status))
-		g_glob.exit_status = WEXITSTATUS(status);
+	if (WIFEXITED(status))	// 정상종료시 non-zero값 리턴
+		g_glob.exit_status = WEXITSTATUS(status);	// 종료상태 리턴
 	if (WTERMSIG(status) == SIGQUIT || WTERMSIG(status) == SIGINT)
 	{
 		g_glob.exit_status = 128 + WTERMSIG(status);
 		if (WTERMSIG(status) == SIGQUIT)
 			ft_putendl_fd("Quit: 3", STDOUT_FILENO);
 		if (WTERMSIG(status) == SIGINT)
-			ft_putstr_fd("\n", STDOUT_FILENO);
+			ft_putstr_fd("^C\n", STDOUT_FILENO);
 	}
-	while (waitpid(-1, NULL, 0) != -1)
+	signal(SIGQUIT, signal_child_sub);
+	signal(SIGINT, signal_child_sub);
+	while (waitpid(-1, NULL, 0) != -1)	// 임의의 자식 프로세르를 기다림
 		;
 	sigaction(SIGINT, &vars->sa, NULL);
 	signal(SIGQUIT, SIG_IGN);
@@ -77,9 +81,11 @@ static pid_t	execute_cmd(t_cmd **cmd, t_vars *vars)
 	pid_t	pid;
 	int		is_fork;
 
+	// char	buff[100];
 	pid = 0;
 	while (*cmd)
 	{
+		printf("cmd in execute : %s\n",*(*cmd)->cmd);
 		is_fork = exec_is_fork(*cmd);
 		if (is_fork)
 		{
@@ -89,9 +95,16 @@ static pid_t	execute_cmd(t_cmd **cmd, t_vars *vars)
 		}
 		if (pid == -1)
 			return (perror("minishell: fork"), -1);
-		if (pid == 0)
+		if (pid == 0){ 
+			printf("fork here in cmd\n");
 			exec_cmd_child(*cmd, vars, is_fork);	// fork된 후에 자식 프로세스가 실행 
-		if (pid == 0 && is_fork)	// fork된 자식 프로세스 종료 (pid 초기값 0인 fork안된 프로세스가 종료되는것 방지)
+		}
+	// 	if((*cmd)->pipe[STDIN_FILENO]!=-1){
+	// 	read((*cmd)->pipe[STDIN_FILENO],buff,10);
+	// 	printf("buff : %s\n",buff);}
+	// else
+	// 	printf("pipe is minus one\n");
+		if (pid == 0 && is_fork)	// fork된 자식 프로세스 비정상 종료(원래는 exec_cmd_child에서 다 종료됨) 
 			exit(EXIT_FAILURE);
 		ft_close_pipes(*cmd);
 		if (!(*cmd)->next || ((*cmd)->next && (*cmd)->next->type != PIPE))
@@ -124,6 +137,7 @@ void	execute_cmds(t_vars *vars)
 		if (handle_operators(&cmd))
 			continue ;
 		g_glob.pid = execute_cmd(&cmd, vars);
+		printf("g_glob.pid : %d\n",g_glob.pid);
 		if (g_glob.pid == -1)
 			break ;
 		else if (g_glob.pid > 0)

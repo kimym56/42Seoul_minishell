@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_redirections.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 11:47:56 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/04/05 17:15:51 by hel-makh         ###   ########.fr       */
+/*   Updated: 2022/05/25 00:19:49 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ static void	open_redirect_fd(t_cmd *cmd, t_list *redirect, int *fd)
 
 static void	duplicate_redirect_fd(t_cmd **cmd, int *fd)
 {
+	// printf("before fd : %d, stdin : %d",fd[STDIN_FILENO],STDIN_FILENO);
 	dup2(fd[STDIN_FILENO], STDIN_FILENO);
+	// printf("after fd : %d, stdin : %d\n",fd[STDIN_FILENO],STDIN_FILENO);
 	if (fd[STDIN_FILENO] != STDIN_FILENO && (*cmd)->type == PIPE)
 		(*cmd)->pipe[STDIN_FILENO] = fd[STDIN_FILENO];
 	dup2(fd[STDOUT_FILENO], STDOUT_FILENO);

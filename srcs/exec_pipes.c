@@ -6,7 +6,7 @@
 /*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:54:20 by ybensell          #+#    #+#             */
-/*   Updated: 2022/05/19 01:04:25 by yongmiki         ###   ########.fr       */
+/*   Updated: 2022/05/24 16:21:37 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	exec_cmd_child(t_cmd *cmd, t_vars *vars, int is_fork)
 
 	if (is_fork)
 	{
+		printf("fork here\n");
 		signal(SIGINT, signal_child);
 		signal(SIGQUIT, signal_child);
 	}
@@ -110,7 +111,7 @@ void	exec_cmd_child(t_cmd *cmd, t_vars *vars, int is_fork)
 	{
 		std[STDIN_FILENO] = dup(STDIN_FILENO);
 		std[STDOUT_FILENO] = dup(STDOUT_FILENO);	// 220518
-	}
+	}	//220524_1620
 	if (duplicate_redirections(&cmd, vars, is_fork))
 	{
 		duplicate_pipes(&cmd);

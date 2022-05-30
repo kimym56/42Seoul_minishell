@@ -6,7 +6,7 @@
 /*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 11:42:30 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/05/16 22:30:47 by yongmiki         ###   ########.fr       */
+/*   Updated: 2022/05/23 23:07:51 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <dirent.h>
 # include <errno.h>
 # include "../Libft/libft.h"
+# include <termios.h>
 
 # define PROMPT "minishell$ "
 

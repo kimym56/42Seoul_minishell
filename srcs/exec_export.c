@@ -6,7 +6,7 @@
 /*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 22:30:08 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/05/10 00:51:48 by yongmiki         ###   ########.fr       */
+/*   Updated: 2022/05/29 22:29:12 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_is_varname_export(char *var_name)
 	invalid = 0;
 	i = 0;
 	while (var_name[i] && var_name[i] != '='
-		&& (var_name[i] != '+' || var_name[i + 1] != '=')) // <- 이 줄 조건문 삭제?
+		&& (var_name[i] != '+' || var_name[i + 1] != '=')) // ex)$GG=5,export GG+=2,->GG=52
 	{
 		if (i == 0 && !ft_isalpha(var_name[i]) && var_name[i] != '_')
 			invalid = 1;
@@ -61,10 +61,10 @@ static int	ft_change_env_var(char ***envp, char *var)
 	{
 		if (!ft_strncmp((*envp)[i], var, ft_varname_len_export(var)))
 		{
-			if (var[ft_varname_len_export(var)] == '+'	// + 처리 해줘야함?
+			if (var[ft_varname_len_export(var)] == '+'	
 				&& var[ft_varname_len_export(var) + 1] == '=')
 				(*envp)[i] = ft_stradd((*envp)[i], &ft_strchr(var, '=')[1]);
-			else if (ft_strlen((*envp)[i]) == ft_varname_len_export(var)) // envp[i]에서 '=' 이 없는 경우가 있나? 
+			else if (ft_strlen((*envp)[i]) == ft_varname_len_export(var)) 
 				(*envp)[i] = ft_stradd((*envp)[i], ft_strchr(var, '='));
 			else
 			{
@@ -89,8 +89,8 @@ static int	edit_env(char ***envp, char *argv)
 		return (0);
 	var_value = ft_getenv(var_name, *envp);
 	if ((var_value || ft_arr_has_str(*envp, var_name)) && !ft_strchr(argv, '='))	// var_value가 존재(0이상)하면서 '=' 이 없을때
-		return (ft_free(var_name), 1);	// 이거 왜 1? 0아님? 위에 ft_strchr이 0면 error 아닌가
-	if (!var_value && !ft_arr_has_str(*envp, var_name))	// var_value가 error로 인한 null 일때
+		return (ft_free(var_name), 1);	
+	if (!var_value && !ft_arr_has_str(*envp, var_name))	// envp에 새로운 환경변수를 추가할 때
 	{
 		*envp = ft_add_str2arr(*envp, argv);
 		if (!*envp)

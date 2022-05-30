@@ -6,7 +6,7 @@
 /*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:52:39 by ybensell          #+#    #+#             */
-/*   Updated: 2022/05/09 23:26:29 by yongmiki         ###   ########.fr       */
+/*   Updated: 2022/05/28 21:00:21 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,16 @@ int	builtin_cd(char **cmd, char ***envp)
 		cwd = ft_strdup(ft_getenv("PWD", *envp));
 	else
 		cwd = ft_strdup("");
-	printf("cmd : %s,cwd : %s\n",cmd[1],cwd);
+	// printf("cmd : %s,cwd : %s\n",cmd[1],cwd);
 	if (!cwd)
 		return (EXIT_FAILURE);
-	if ((!cmd[1] || !ft_strcmp(cmd[1], "--")) && !cd_home(cwd, envp))
-		return (ft_free(cwd), EXIT_FAILURE);
 	if (!*cmd[1])
 		return (ft_free(cwd), EXIT_SUCCESS);
-	if (!ft_strcmp(cmd[1], "-") && !cd_oldpwd(cwd, envp))
-		return (ft_free(cwd), EXIT_FAILURE);
-	if ((*cmd[1] == '~') && cd_home(cwd, envp))
+	if (!ft_strcmp(cmd[1], "--") && cd_home(cwd, envp))
+		return (ft_free(cwd), EXIT_SUCCESS);
+	if (!ft_strcmp(cmd[1], "-") && cd_oldpwd(cwd, envp))
+		return (ft_free(cwd), EXIT_SUCCESS);
+	if (!ft_strcmp(cmd[1], "~")&& cd_home(cwd, envp))
 		return (ft_free(cwd), EXIT_SUCCESS);
 	if (chdir(cmd[1]) == -1)
 	{

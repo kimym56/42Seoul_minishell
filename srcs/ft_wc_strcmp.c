@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wc_strcmp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 10:19:43 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/03/23 12:48:03 by hel-makh         ###   ########.fr       */
+/*   Updated: 2022/05/28 16:22:38 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ static void	ft_skip_wildcards(
 
 	str = ft_strnotchr(&s1[*i + 1], '*');
 	str = ft_remove_quotes(ft_strdup(str));
+	printf("file : %s\n",s2);
+	printf("before i : %zu,j: %zu\n",*i,*j);
+	printf("str in wc : %s\n",str);
 	if (str && ft_strchr(str, '*'))
 		search_func = &ft_strchr;
 	else
@@ -45,6 +48,8 @@ static void	ft_skip_wildcards(
 		*i -= 1;
 		*j -= 1;
 	}
+
+	printf("after i : %zu,j: %zu\n",*i,*j);
 	str = ft_free(str);
 }
 

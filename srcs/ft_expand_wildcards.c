@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expand_wildcards.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:06:35 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/03/31 12:08:17 by hel-makh         ###   ########.fr       */
+/*   Updated: 2022/05/28 20:16:38 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static char	**ft_get_files(char *cmd, int *index, char *cwd)
 	DIR				*folder;
 	struct dirent	*entry;
 	char			**files;
-
 	files = ft_calloc(1, sizeof(char *));
 	if (!files)
 		return (NULL);
@@ -27,6 +26,7 @@ static char	**ft_get_files(char *cmd, int *index, char *cwd)
 	while (1)
 	{
 		entry = readdir(folder);
+		
 		if (!entry)
 			break ;
 		if (entry->d_name[0] != '.' && !ft_wc_strcmp(cmd, entry->d_name))
@@ -66,13 +66,15 @@ int	ft_expand_wildcards(t_cmd **cmd, t_list **redirect, int *index)
 	char	*cmd_p;
 	char	cwd[4096];
 
-	if (index)
+	if (index){	
 		cmd_p = (*cmd)->cmd[*index];
-	else
+		// printf("expand_wildcards, cmd_p: %s\n",cmd_p);
+		}
+	else // index의 주소가 없을때
 		cmd_p = (*redirect)->content;
 	if (!ft_has_wildcard(cmd_p))
 		return (0);
-	if (!getcwd(cwd, 4096))
+	if (!getcwd(cwd, 4096))	// 현재 작업 경로(pwd)를 cwd에 넣음
 		return (0);
 	files = ft_get_files(cmd_p, index, cwd);
 	if (!files)

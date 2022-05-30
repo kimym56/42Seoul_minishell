@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 11:13:32 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/05/19 01:03:13 by yongmiki         ###   ########.fr       */
+/*   Created: 2022/05/03 11:13:32 by hyjeon            #+#    #+#             */
+/*   Updated: 2022/05/29 22:47:21 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,15 @@ static int	ft_loop_cmds(t_vars *vars)
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_vars	vars;
+	struct termios term;
+	
 	(void)argc;
 	(void)argv;
 	if (!ft_init_vars(&vars, envp))
 		return (EXIT_FAILURE);	//220510
+	tcgetattr(STDIN_FILENO, &term);
+  term.c_lflag &= ~(ECHOCTL);
+  tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	vars.sa.sa_handler = signals_handler;
 	vars.sa.sa_flags = 0;
 	// signal(SIGINT,signals_handler);

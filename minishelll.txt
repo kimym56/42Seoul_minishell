@@ -1,0 +1,22 @@
+cmd in expand : echo
+split : echo
+split[j] : echo
+j : 0
+cmd in expand : hi
+split : hi
+split[j] : hi
+j : 0
+hi
+cmd in expand : abc
+split : abc
+split[j] : abc
+j : 0
+cmd in expand : echo
+split : echo
+split[j] : echo
+j : 0
+cmd in expand : abc
+split : abc
+split[j] : abc
+j : 0
+abc

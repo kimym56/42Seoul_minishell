@@ -6,7 +6,7 @@
 /*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:46:03 by ybensell          #+#    #+#             */
-/*   Updated: 2022/05/09 23:26:33 by yongmiki         ###   ########.fr       */
+/*   Updated: 2022/05/28 21:18:11 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	exec_built_in(char **cmd, t_vars *vars)
 	else if (ft_strcmp(cmd[0], "pwd") == 0)
 		status = builtin_pwd();
 	else if (ft_strcmp(cmd[0], "cd") == 0)
-		status = builtin_cd(cmd, &vars->envp);
+		status = builtin_cd(cmd, &vars->envp);	// 0528
 	else if (ft_strcmp(cmd[0], "env") == 0)
 		status = builtin_env(vars->envp);
 	else if (ft_strcmp(cmd[0], "export") == 0)

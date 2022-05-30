@@ -6,7 +6,7 @@
 /*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 08:35:27 by ybensell          #+#    #+#             */
-/*   Updated: 2022/05/18 23:43:27 by yongmiki         ###   ########.fr       */
+/*   Updated: 2022/05/30 12:50:40 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ void	signal_child(int sign)
 	else if (sign == SIGINT && g_glob.pid == 0)
 	{
 		ft_putchar_fd('\n', 1);
+		g_glob.exit_status = 130;
+	}
+}
+
+void	signal_child_sub(int sign)
+{
+	if (sign == SIGQUIT )
+	{
+		ft_putstr_fd("Quit: 3\n", 1);
+		g_glob.exit_status = 131;
+	}
+	else if (sign == SIGINT )
+	{
+		ft_putchar_fd('^C', 1);
 		g_glob.exit_status = 130;
 	}
 }
@@ -49,3 +63,4 @@ void	signals_handler(int sign)
 		rl_redisplay();
 	}
 }
+

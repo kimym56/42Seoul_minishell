@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 10:34:52 by ybensell          #+#    #+#             */
-/*   Updated: 2022/04/29 00:08:47 by hel-makh         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:06:15 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ void	exit_perror(char *error)
 
 int	exec_is_fork(t_cmd *cmd)
 {
+	printf("cmd in fork : %s\n",*cmd->cmd);
 	if (!cmd->cmd[0]
 		|| (is_built_in(cmd->cmd[0])
 			&& cmd->type != PIPE
 			&& (!cmd->next || (cmd->next && cmd->next->type != PIPE))))
-		return (0);
+		{printf("return 0\n");
+		return (0);}
 	return (1);
 }
