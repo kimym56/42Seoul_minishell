@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "*.js": "javascriptreact",
-    "chrono": "c"
+    "chrono": "c",
+    "libft.h": "c"
   }
 }
