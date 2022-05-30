@@ -58,7 +58,7 @@ static size_t	ft_get_token_size(t_vars *vars, int i)
 	while (cmd[++i])
 	{
 		size ++;
-		if (!quote && (cmd[i] == '\'' || cmd[i] == '"'))	// Single,Double Quote in Char
+		if (!quote && (cmd[i] == '\'' || cmd[i] == '"'))
 			quote = cmd[i];
 		else if (quote)
 		{
@@ -74,7 +74,7 @@ static size_t	ft_get_token_size(t_vars *vars, int i)
 
 static int	ft_get_token_type(char *token_content)
 {
-	if (!ft_strcmp(token_content, "\""))	// Double Quote in String
+	if (!ft_strcmp(token_content, "\""))
 		return (D_QUOTE);
 	else if (!ft_strcmp(token_content, "'"))
 		return (S_QUOTE);

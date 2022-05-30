@@ -30,14 +30,14 @@ static size_t	ft_split_arglen(char const *s)
 	return (str_len);
 }
 
-static size_t	ft_loop_count(const char *s, size_t *index, char *quote)	//"   hello"에서 ""안에 길이 새는 함수
+static size_t	ft_loop_count(const char *s, size_t *index, char *quote)
 {
 	size_t	count;
 
 	count = 0;
 	while (s[*index])
 	{
-		if (!*quote && ft_isspace(s[*index - 1]) && !ft_isspace(s[*index]))	// hello"hi"같이 첫시작이 "가 아니면서 중간에 "가 들어잇는 경우 
+		if (!*quote && ft_isspace(s[*index - 1]) && !ft_isspace(s[*index]))
 			count ++;
 		if (!*quote && (s[*index] == '"' || s[*index] == '\''))
 			*quote = s[*index];

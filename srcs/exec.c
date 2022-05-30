@@ -47,7 +47,7 @@ static char	*find_cmd(t_cmd *cmd, t_vars *vars)
 
 	lstat(cmd->cmd[0], &path_stat);
 	if (S_ISREG(path_stat.st_mode) && access(cmd->cmd[0], F_OK) == 0)
-	{	// S_ISREG : 정규파일인지 확인, F_OK : 존재여부, X_OK : 실행여부
+	{
 		if (access(cmd->cmd[0], X_OK) == 0)
 			return (cmd->cmd[0]);
 		exit_error(cmd->cmd[0], "Permission denied", 126);
@@ -69,26 +69,12 @@ static int	split_args(t_cmd **cmd, int *index)
 {
 	char	**split;
 	size_t	i;
-	int	j;
-	j=0;
-	// while((*cmd)->cmd[j])
-	// 	printf("cmd : %s\n",(*cmd)->cmd[j++]);
-	// j=0;
-	//bash vs. zsh랑 차이있음
-	split = ft_split_args((*cmd)->cmd[*index]);	// export GG='    ls   -l' -> echo $GG vs. echo "$GG" 
-	printf("split : %s\n",split[0]);
-	while(split[j]){
-		printf("split[j] : %s\n",split[j]);
-		printf("j : %d\n",j);
-		j++;
-		}
+
+	split = ft_split_args((*cmd)->cmd[*index]);
 	if (!split)
 		return (0);
-	(*cmd)->cmd = ft_replace_arr((*cmd)->cmd, split, *index, 1);	// 위에 ft_split_args에서 split한것을 cmd에 대체
-	// j=0;
-	// while((*cmd)->cmd[j])
-	// 	printf("AFTER cmd : %s\n",(*cmd)->cmd[j++]);
-	if (!(*cmd)->cmd) //0527
+	(*cmd)->cmd = ft_replace_arr((*cmd)->cmd, split, *index, 1);
+	if (!(*cmd)->cmd)
 		return (ft_free_2d(split), 0);
 	i = 0;
 	while (i < ft_arrlen(split))
@@ -113,7 +99,6 @@ static void	expand_args(t_cmd **cmd, t_vars *vars)
 	i = 0;
 	while (t_cmd->cmd[i])
 	{
-		printf("cmd in expand : %s\n",t_cmd->cmd[i]);
 		ft_expand_env_vars(vars->envp, &t_cmd->cmd[i]);
 		if (!split_args(&t_cmd, &i))
 			return ;
@@ -132,30 +117,22 @@ static void	expand_args(t_cmd **cmd, t_vars *vars)
 void	the_execution(t_cmd *cmd, t_vars *vars)
 {
 	char		*tmp;
-	// int j;
-	// j =0;
+
 	if (!cmd->cmd[0])
 	{
 		g_glob.exit_status = 0;
 		return ;
 	}
-	expand_args(&cmd, vars);	// 확인
+	expand_args(&cmd, vars);
 	if (is_built_in(cmd->cmd[0]))
 	{
-		g_glob.exit_status = exec_built_in(cmd->cmd, vars);// 0529
+		g_glob.exit_status = exec_built_in(cmd->cmd, vars);
 		if ((cmd->next && cmd->next->type == PIPE)
 			|| cmd->type == PIPE)
 			exit (g_glob.exit_status);
 		return ;
 	}
-	tmp = find_cmd(cmd, vars);// 확인 필요
-	// printf("tmp: %s, cmd : %s %s, envp: %s %s\n",tmp,cmd->cmd[0],cmd->cmd[1],vars->envp[0],vars->envp[1]);
-	// while(cmd->cmd){
-		// printf("cmd : %s \n",*cmd->cmd);
-		// cmd->cmd++;
-	// }
-	// while(cmd->cmd[j])
-	// 	printf("$$$$cmd[j] : %s\n",cmd->cmd[j++]);
-	if ((execve(tmp, cmd->cmd, vars->envp) == -1)) 
+	tmp = find_cmd(cmd, vars);
+	if ((execve(tmp, cmd->cmd, vars->envp) == -1))
 		exit_perror("minishell: execve");
 }

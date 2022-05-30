@@ -20,8 +20,8 @@
 # include <signal.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "/usr/local/opt/readline/include/readline/readline.h"
-# include "/usr/local/opt/readline/include/readline/history.h"
+# include "/Users/yongmiki/.brew/opt/readline/include/readline/readline.h"
+# include "/Users/yongmiki/.brew/opt/readline/include/readline/history.h"
 # include <dirent.h>
 # include <errno.h>
 # include "../Libft/libft.h"
@@ -74,8 +74,8 @@ typedef struct s_vars {
 	char				*cmdline;
 	char				*last_cmdline;
 	char				**envp;
-	t_list				*tokens;	// echo,hi,&&,echo,hello
-	t_cmd				*cmds;			// echo(type : 0),echo(type : 9)
+	t_list				*tokens;
+	t_cmd				*cmds;
 	struct sigaction	sa;
 }	t_vars;
 
@@ -100,6 +100,7 @@ char	*ft_getenv(char *var, char **envp);
 int		ft_init_vars(t_vars *vars, char *envp[]);
 void	signals_handler(int sign);
 void	signal_child(int sign);
+void	signal_child_sub(int sign);
 int		exec_is_fork(t_cmd *cmd);
 void	ft_free_program(t_vars *vars);
 char	**ft_split_args(char const *s);

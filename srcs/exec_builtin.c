@@ -37,7 +37,7 @@ int	exec_built_in(char **cmd, t_vars *vars)
 	else if (ft_strcmp(cmd[0], "pwd") == 0)
 		status = builtin_pwd();
 	else if (ft_strcmp(cmd[0], "cd") == 0)
-		status = builtin_cd(cmd, &vars->envp);	// 0528
+		status = builtin_cd(cmd, &vars->envp);
 	else if (ft_strcmp(cmd[0], "env") == 0)
 		status = builtin_env(vars->envp);
 	else if (ft_strcmp(cmd[0], "export") == 0)

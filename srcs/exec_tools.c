@@ -33,12 +33,10 @@ void	exit_perror(char *error)
 
 int	exec_is_fork(t_cmd *cmd)
 {
-	printf("cmd in fork : %s\n",*cmd->cmd);
 	if (!cmd->cmd[0]
 		|| (is_built_in(cmd->cmd[0])
 			&& cmd->type != PIPE
 			&& (!cmd->next || (cmd->next && cmd->next->type != PIPE))))
-		{printf("return 0\n");
-		return (0);}
+		return (0);
 	return (1);
 }

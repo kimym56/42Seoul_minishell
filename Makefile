@@ -4,7 +4,7 @@ NAME			=	minishell
 
 MAIN			=	main.c
 
-RDL_DIR			=	/usr/local/opt/readline/
+RDL_DIR			=	/Users/yongmiki/.brew/opt/readline/
 
 SRCS			=	srcs/ft_lstfuncs.c\
 					srcs/ft_cmd_lstfuncs.c\

@@ -89,7 +89,7 @@ static int	open_heredoc(t_cmd *cmd, char *delimiter, char **envp)
 	while (g_glob.heredoc)
 	{
 		heredoc = ft_free(heredoc);
-		ft_putstr_fd("> ", STDOUT_FILENO);
+		ft_putstr_fd("heredoc> ", STDOUT_FILENO);
 		heredoc = get_next_line(STDOUT_FILENO);
 		if (!heredoc || (!ft_strncmp(heredoc, delimiter, ft_strlen(delimiter))
 				&& ft_strlen(heredoc) - 1 == ft_strlen(delimiter)))

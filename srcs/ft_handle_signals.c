@@ -28,14 +28,14 @@ void	signal_child(int sign)
 
 void	signal_child_sub(int sign)
 {
-	if (sign == SIGQUIT )
+	if (sign == SIGQUIT)
 	{
 		ft_putstr_fd("Quit: 3\n", 1);
 		g_glob.exit_status = 131;
 	}
-	else if (sign == SIGINT )
+	else if (sign == SIGINT)
 	{
-		ft_putchar_fd('^C', 1);
+		ft_putstr_fd("^C", 1);
 		g_glob.exit_status = 130;
 	}
 }
@@ -63,4 +63,3 @@ void	signals_handler(int sign)
 		rl_redisplay();
 	}
 }
-

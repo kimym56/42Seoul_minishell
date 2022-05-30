@@ -75,7 +75,7 @@ static int	ft_increment_shlvl(t_vars *vars)
 	if (!shlvl[1])
 		return (ft_free_2d(shlvl), 0);
 	shlvl_new_value = ft_free(shlvl_new_value);
-	if (builtin_export(shlvl, &vars->envp) == EXIT_FAILURE)	// shlvl[1] 가 유효한지 확인하는 함수
+	if (builtin_export(shlvl, &vars->envp) == EXIT_FAILURE)
 		return (ft_free_2d(shlvl), 0);
 	return (ft_free_2d(shlvl), 1);
 }

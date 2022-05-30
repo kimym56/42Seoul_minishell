@@ -34,7 +34,7 @@ static int	ft_is_varname_export(char *var_name)
 	invalid = 0;
 	i = 0;
 	while (var_name[i] && var_name[i] != '='
-		&& (var_name[i] != '+' || var_name[i + 1] != '=')) // ex)$GG=5,export GG+=2,->GG=52
+		&& (var_name[i] != '+' || var_name[i + 1] != '='))
 	{
 		if (i == 0 && !ft_isalpha(var_name[i]) && var_name[i] != '_')
 			invalid = 1;
@@ -61,10 +61,10 @@ static int	ft_change_env_var(char ***envp, char *var)
 	{
 		if (!ft_strncmp((*envp)[i], var, ft_varname_len_export(var)))
 		{
-			if (var[ft_varname_len_export(var)] == '+'	
+			if (var[ft_varname_len_export(var)] == '+'
 				&& var[ft_varname_len_export(var) + 1] == '=')
 				(*envp)[i] = ft_stradd((*envp)[i], &ft_strchr(var, '=')[1]);
-			else if (ft_strlen((*envp)[i]) == ft_varname_len_export(var)) 
+			else if (ft_strlen((*envp)[i]) == ft_varname_len_export(var))
 				(*envp)[i] = ft_stradd((*envp)[i], ft_strchr(var, '='));
 			else
 			{
@@ -88,9 +88,9 @@ static int	edit_env(char ***envp, char *argv)
 	if (!var_name)
 		return (0);
 	var_value = ft_getenv(var_name, *envp);
-	if ((var_value || ft_arr_has_str(*envp, var_name)) && !ft_strchr(argv, '='))	// var_value가 존재(0이상)하면서 '=' 이 없을때
-		return (ft_free(var_name), 1);	
-	if (!var_value && !ft_arr_has_str(*envp, var_name))	// envp에 새로운 환경변수를 추가할 때
+	if ((var_value || ft_arr_has_str(*envp, var_name)) && !ft_strchr(argv, '='))
+		return (ft_free(var_name), 1);
+	if (!var_value && !ft_arr_has_str(*envp, var_name))
 	{
 		*envp = ft_add_str2arr(*envp, argv);
 		if (!*envp)
@@ -108,7 +108,7 @@ int	builtin_export(char **cmd, char ***envp)
 {
 	char	**temp_envp;
 	int		i;
-	// cmd(shlvl[1])이 공백이면 에러처리 => 필요? 삭제?
+
 	if (!cmd[1])
 	{
 		temp_envp = ft_arrdup(*envp);
@@ -118,7 +118,6 @@ int	builtin_export(char **cmd, char ***envp)
 		temp_envp = ft_free(temp_envp);
 		return (EXIT_SUCCESS);
 	}
-	//
 	i = 1;
 	while (cmd[i])
 	{

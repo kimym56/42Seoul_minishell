@@ -77,11 +77,11 @@ static int	cd_home(char *old_cwd, char ***envp)
 int	builtin_cd(char **cmd, char ***envp)
 {
 	char	*cwd;
+
 	if (ft_getenv("PWD", *envp))
 		cwd = ft_strdup(ft_getenv("PWD", *envp));
 	else
 		cwd = ft_strdup("");
-	// printf("cmd : %s,cwd : %s\n",cmd[1],cwd);
 	if (!cwd)
 		return (EXIT_FAILURE);
 	if (!*cmd[1])
@@ -90,7 +90,7 @@ int	builtin_cd(char **cmd, char ***envp)
 		return (ft_free(cwd), EXIT_SUCCESS);
 	if (!ft_strcmp(cmd[1], "-") && cd_oldpwd(cwd, envp))
 		return (ft_free(cwd), EXIT_SUCCESS);
-	if (!ft_strcmp(cmd[1], "~")&& cd_home(cwd, envp))
+	if (!ft_strcmp(cmd[1], "~") && cd_home(cwd, envp))
 		return (ft_free(cwd), EXIT_SUCCESS);
 	if (chdir(cmd[1]) == -1)
 	{

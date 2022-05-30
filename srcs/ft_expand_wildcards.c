@@ -17,6 +17,7 @@ static char	**ft_get_files(char *cmd, int *index, char *cwd)
 	DIR				*folder;
 	struct dirent	*entry;
 	char			**files;
+
 	files = ft_calloc(1, sizeof(char *));
 	if (!files)
 		return (NULL);
@@ -26,7 +27,6 @@ static char	**ft_get_files(char *cmd, int *index, char *cwd)
 	while (1)
 	{
 		entry = readdir(folder);
-		
 		if (!entry)
 			break ;
 		if (entry->d_name[0] != '.' && !ft_wc_strcmp(cmd, entry->d_name))
@@ -66,15 +66,13 @@ int	ft_expand_wildcards(t_cmd **cmd, t_list **redirect, int *index)
 	char	*cmd_p;
 	char	cwd[4096];
 
-	if (index){	
+	if (index)
 		cmd_p = (*cmd)->cmd[*index];
-		// printf("expand_wildcards, cmd_p: %s\n",cmd_p);
-		}
-	else // index의 주소가 없을때
+	else
 		cmd_p = (*redirect)->content;
 	if (!ft_has_wildcard(cmd_p))
 		return (0);
-	if (!getcwd(cwd, 4096))	// 현재 작업 경로(pwd)를 cwd에 넣음
+	if (!getcwd(cwd, 4096))
 		return (0);
 	files = ft_get_files(cmd_p, index, cwd);
 	if (!files)

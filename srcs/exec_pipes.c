@@ -103,15 +103,14 @@ void	exec_cmd_child(t_cmd *cmd, t_vars *vars, int is_fork)
 
 	if (is_fork)
 	{
-		printf("fork here\n");
 		signal(SIGINT, signal_child);
 		signal(SIGQUIT, signal_child);
 	}
 	if (!is_fork)
 	{
 		std[STDIN_FILENO] = dup(STDIN_FILENO);
-		std[STDOUT_FILENO] = dup(STDOUT_FILENO);	// 220518
-	}	//220524_1620
+		std[STDOUT_FILENO] = dup(STDOUT_FILENO);
+	}
 	if (duplicate_redirections(&cmd, vars, is_fork))
 	{
 		duplicate_pipes(&cmd);

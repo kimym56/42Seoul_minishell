@@ -31,9 +31,6 @@ static void	ft_skip_wildcards(
 
 	str = ft_strnotchr(&s1[*i + 1], '*');
 	str = ft_remove_quotes(ft_strdup(str));
-	printf("file : %s\n",s2);
-	printf("before i : %zu,j: %zu\n",*i,*j);
-	printf("str in wc : %s\n",str);
 	if (str && ft_strchr(str, '*'))
 		search_func = &ft_strchr;
 	else
@@ -48,8 +45,6 @@ static void	ft_skip_wildcards(
 		*i -= 1;
 		*j -= 1;
 	}
-
-	printf("after i : %zu,j: %zu\n",*i,*j);
 	str = ft_free(str);
 }
 

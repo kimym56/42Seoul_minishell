@@ -73,9 +73,7 @@ static void	open_redirect_fd(t_cmd *cmd, t_list *redirect, int *fd)
 
 static void	duplicate_redirect_fd(t_cmd **cmd, int *fd)
 {
-	// printf("before fd : %d, stdin : %d",fd[STDIN_FILENO],STDIN_FILENO);
 	dup2(fd[STDIN_FILENO], STDIN_FILENO);
-	// printf("after fd : %d, stdin : %d\n",fd[STDIN_FILENO],STDIN_FILENO);
 	if (fd[STDIN_FILENO] != STDIN_FILENO && (*cmd)->type == PIPE)
 		(*cmd)->pipe[STDIN_FILENO] = fd[STDIN_FILENO];
 	dup2(fd[STDOUT_FILENO], STDOUT_FILENO);
