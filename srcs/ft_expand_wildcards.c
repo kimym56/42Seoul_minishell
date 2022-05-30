@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expand_wildcards.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyjeon <hyjeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 13:06:35 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/05/28 20:16:38 by yongmiki         ###   ########.fr       */
+/*   Created: 2022/05/30 21:00:37 by hyjeon            #+#    #+#             */
+/*   Updated: 2022/05/30 21:00:38 by hyjeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

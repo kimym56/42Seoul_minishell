@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_signals.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyjeon <hyjeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 08:35:27 by ybensell          #+#    #+#             */
-/*   Updated: 2022/05/30 12:50:40 by yongmiki         ###   ########.fr       */
+/*   Created: 2022/05/30 20:55:13 by hyjeon            #+#    #+#             */
+/*   Updated: 2022/05/30 20:55:15 by hyjeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

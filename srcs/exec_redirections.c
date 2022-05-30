@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_redirections.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyjeon <hyjeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/27 11:47:56 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/05/25 00:19:49 by yongmiki         ###   ########.fr       */
+/*   Created: 2022/05/30 20:58:26 by hyjeon            #+#    #+#             */
+/*   Updated: 2022/05/30 20:58:28 by hyjeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

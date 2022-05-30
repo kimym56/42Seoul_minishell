@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyjeon <hyjeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 11:13:32 by hyjeon            #+#    #+#             */
-/*   Updated: 2022/05/29 22:47:21 by yongmiki         ###   ########.fr       */
+/*   Created: 2022/05/30 20:54:22 by hyjeon            #+#    #+#             */
+/*   Updated: 2022/05/30 20:54:25 by hyjeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
+
 extern char		**environ;
 
 static int	ft_loop_cmds(t_vars *vars)
