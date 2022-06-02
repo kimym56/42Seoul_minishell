@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_cmds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyjeon <hyjeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:59:05 by hyjeon            #+#    #+#             */
-/*   Updated: 2022/05/30 20:59:07 by hyjeon           ###   ########.fr       */
+/*   Updated: 2022/05/31 17:42:24 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	ft_add_cmd(t_vars *vars, t_cmd **cmd, t_list **token)
 	{
 		ft_lstadd_back(&(*cmd)->redirect,
 			ft_lstnew(ft_strdup((*token)->next->content), (*token)->type));
+		printf("token next : %s, type next : %d\n",(*token)->next->content,(*token)->type);
 		if (!ft_lstlast((*cmd)->redirect)->content)
 			return (0);
 		*token = (*token)->next;
@@ -50,6 +51,7 @@ int	ft_parse_cmds(t_vars *vars)
 	token = vars->tokens;
 	while (token)
 	{
+		// printf("token : %s, type: : %d\n",token->content,token->type);
 		if (token->type == WORD)
 		{
 			cmd->cmd = ft_add_str2arr(cmd->cmd, token->content);

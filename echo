@@ -1,0 +1,35 @@
+envp
+USER=KimYongMin
+__CFBundleIdentifier=com.microsoft.VSCode
+COMMAND_MODE=unix2003
+LOGNAME=KimYongMin
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/kimyoungmin/Library/Android/sdk/emulator:/Users/kimyoungmin/Library/Android/sdk/tools:/Users/kimyoungmin/Library/Android/sdk/tools/bin:/Users/kimyoungmin/Library/Android/sdk/platform-tools:/Users/kimyoungmin/Library/Android/sdk/emulator:/Users/kimyoungmin/Library/Android/sdk/tools:/Users/kimyoungmin/Library/Android/sdk/tools/bin:/Users/kimyoungmin/Library/Android/sdk/platform-tools
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.bhehDegnn1/Listeners
+SHELL=/bin/zsh
+HOME=/Users/kimyoungmin
+__CF_USER_TEXT_ENCODING=0x1F5:0x3:0x33
+TMPDIR=/var/folders/6b/zx52s7g14vbg2s32_qt2glkr0000gn/T/
+XPC_SERVICE_NAME=0
+XPC_FLAGS=0x0
+ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+SHLVL=2
+PWD=/Users/kimyoungmin/tmp/42Seoul_minishell
+ANDROID_SDK=/Users/kimyoungmin/Library/Android/sdk
+ZSH=/Users/kimyoungmin/.oh-my-zsh
+PAGER=less
+LESS=-R
+LSCOLORS=Gxfxcxdxbxegedabagacad
+ANDROID_HOME=/Users/kimyoungmin/Library/Android/sdk
+TERM_PROGRAM=vscode
+TERM_PROGRAM_VERSION=1.67.2
+LANG=ko_KR.UTF-8
+COLORTERM=truecolor
+VSCODE_GIT_IPC_HANDLE=/var/folders/6b/zx52s7g14vbg2s32_qt2glkr0000gn/T/vscode-git-322d77b51f.sock
+VSCODE_GIT_ASKPASS_NODE=/private/var/folders/6b/zx52s7g14vbg2s32_qt2glkr0000gn/T/AppTranslocation/BD6A97A9-912F-4A48-B3F3-5ADC51924E99/d/Visual Studio Code-3.app/Contents/MacOS/Electron
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
+VSCODE_GIT_ASKPASS_MAIN=/private/var/folders/6b/zx52s7g14vbg2s32_qt2glkr0000gn/T/AppTranslocation/BD6A97A9-912F-4A48-B3F3-5ADC51924E99/d/Visual Studio Code-3.app/Contents/Resources/app/extensions/git/dist/askpass-main.js
+GIT_ASKPASS=/private/var/folders/6b/zx52s7g14vbg2s32_qt2glkr0000gn/T/AppTranslocation/BD6A97A9-912F-4A48-B3F3-5ADC51924E99/d/Visual Studio Code-3.app/Contents/Resources/app/extensions/git/dist/askpass.sh
+TERM=xterm-256color
+_=/Users/kimyoungmin/tmp/42Seoul_minishell/./minishell
+a
+bb

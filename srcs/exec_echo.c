@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_echo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyjeon <hyjeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:56:17 by hyjeon            #+#    #+#             */
-/*   Updated: 2022/05/30 20:56:19 by hyjeon           ###   ########.fr       */
+/*   Updated: 2022/05/31 15:54:49 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	builtin_echo(char **cmd)
 {
 	int	newline;
 	int	i;
+	// char temp[10];
 
 	newline = 1;
 	i = 1;
@@ -49,5 +50,9 @@ int	builtin_echo(char **cmd)
 	}
 	if (newline)
 		printf ("\n");
+	// printf("buffer: ");
+	// read(0,temp,10);
+	// write(1,temp,1);
+	// printf("\n");
 	return (EXIT_SUCCESS);
 }

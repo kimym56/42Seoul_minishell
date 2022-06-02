@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyjeon <hyjeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:55:48 by hyjeon            #+#    #+#             */
-/*   Updated: 2022/05/30 20:55:50 by hyjeon           ###   ########.fr       */
+/*   Updated: 2022/05/31 19:01:47 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	builtin_cd(char **cmd, char ***envp)
 		cwd = ft_strdup("");
 	if (!cwd)
 		return (EXIT_FAILURE);
-	if (!*cmd[1])
+	if (!cmd[1])
 		return (ft_free(cwd), EXIT_SUCCESS);
 	if (!ft_strcmp(cmd[1], "--") && cd_home(cwd, envp))
 		return (ft_free(cwd), EXIT_SUCCESS);

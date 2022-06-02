@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyjeon <hyjeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:53:27 by hyjeon            #+#    #+#             */
-/*   Updated: 2022/05/30 20:53:30 by hyjeon           ###   ########.fr       */
+/*   Updated: 2022/05/31 09:21:45 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <signal.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "/Users/yongmiki/.brew/opt/readline/include/readline/readline.h"
-# include "/Users/yongmiki/.brew/opt/readline/include/readline/history.h"
+# include "/usr/local/opt/readline/include/readline/readline.h"
+# include "/usr/local/opt/readline/include/readline/history.h"
 # include <dirent.h>
 # include <errno.h>
 # include "../Libft/libft.h"

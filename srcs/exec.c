@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyjeon <hyjeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: yongmiki <yongmiki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:54:44 by hyjeon            #+#    #+#             */
-/*   Updated: 2022/05/30 20:54:46 by hyjeon           ###   ########.fr       */
+/*   Updated: 2022/05/31 12:37:42 by yongmiki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ static void	expand_args(t_cmd **cmd, t_vars *vars)
 void	the_execution(t_cmd *cmd, t_vars *vars)
 {
 	char		*tmp;
-
+	int j;
 	if (!cmd->cmd[0])
 	{
 		g_glob.exit_status = 0;
@@ -132,6 +132,10 @@ void	the_execution(t_cmd *cmd, t_vars *vars)
 			exit (g_glob.exit_status);
 		return ;
 	}
+	j=0;
+	printf("envp\n");
+	while(vars->envp[j])
+		printf("%s\n",vars->envp[j++]);
 	tmp = find_cmd(cmd, vars);
 	if ((execve(tmp, cmd->cmd, vars->envp) == -1))
 		exit_perror("minishell: execve");

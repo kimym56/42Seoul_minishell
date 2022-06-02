@@ -4,7 +4,7 @@ NAME			=	minishell
 
 MAIN			=	main.c
 
-RDL_DIR			=	/Users/yongmiki/.brew/opt/readline/
+RDL_DIR			=	/usr/local/opt/readline/
 
 SRCS			=	srcs/ft_lstfuncs.c\
 					srcs/ft_cmd_lstfuncs.c\
@@ -59,6 +59,8 @@ $(NAME):		$(HEADER) $(LIB) $(OBJS)
 
 all:			$(NAME)
 
+bonus:		$(NAME)
+
 $(LIB):
 				make -C $(LIBFT)
 
@@ -70,6 +72,8 @@ fclean:			clean
 				$(RM) $(NAME)
 				make fclean -C Libft
 
-re:				fclean all
+re:				
+				@make	fclean 
+				@make	all
 
 .PHONY:			all clean fclean re
