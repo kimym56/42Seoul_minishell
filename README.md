@@ -1,4 +1,6 @@
 # 42Seoul_minishell
+[![yongmiki's 42 minishell Score](https://badge42.vercel.app/api/v2/cl3x3n267003009mk7325wwen/project/2579858)](https://github.com/JaeSeoKim/badge42)
+
 ## Introduction
 The existence of shells is linked to the very existence of IT. At the time, all coders agreed
 that communicating with a computer using aligned 1/0 switches was seriously
